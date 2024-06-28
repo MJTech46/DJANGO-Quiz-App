@@ -18,6 +18,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('v1/', views.NotePadListCreate.as_view(), name="api_get_post"),
-    path('v1/<int:pk>', views.NotePadRetrieveUpdateDestroy.as_view(), name="api_update_delete"),
+    path('test1/', views.NotePadListCreate.as_view(), name="api_get_post"),
+    path('test1/<int:pk>', views.NotePadRetrieveUpdateDestroy.as_view(), name="api_update_delete"),
+    path('form/<str:username>', views.UsernameRetrieveAPIView.as_view(), name="username_validator"),
 ]

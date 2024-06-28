@@ -4,6 +4,15 @@ from django.conf import settings
 
 User=settings.AUTH_USER_MODEL
 
+
+class Category(models.Model):
+    uuid = models.UUIDField(default=uuid4, unique=True, editable=False)
+    category_text = models.TextField(unique=True, null=False)
+
+    def __str__(self) -> str:
+        return self.category_text
+
+
 class Quiz(models.Model):
     EASY = 'easy'
     MEDIUM = 'medium'
@@ -18,6 +27,7 @@ class Quiz(models.Model):
     uuid = models.UUIDField(default=uuid4, unique=True, editable=False)
     question_text = models.TextField(unique=True, null=False)
     difficulty = models.CharField(max_length=6, choices=DIFFICULTY_CHOICES, default=EASY)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     participants = models.ManyToManyField(User, blank=True)
 
     def __str__(self) -> str:
