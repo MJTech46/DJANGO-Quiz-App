@@ -1,22 +1,25 @@
-from django.shortcuts import render
-from rest_framework import generics
+##All api views are here##
+
+#Models
 from .models import NotePad
 from Account.models import CustomUser
-from .serializers import *
 
-# Allow: GET, POST, HEAD, OPTIONS.
-class NotePadListCreate(generics.ListCreateAPIView):
+#Serializers
+from .serializers import NotePadeSerialiser
+from Account.serializers import UsernameSerializer
+
+#Other imports
+from rest_framework import viewsets, mixins
+
+
+#Allow __all__
+class NotePadeViewSet(viewsets.ModelViewSet):
     queryset = NotePad.objects.all()
-    serializer_class = NotePadSerializer
+    serializer_class = NotePadeSerialiser
 
-# Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
-class NotePadRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = NotePad.objects.all()
-    serializer_class = NotePadSerializer
-    lookup_field = "pk"
-
-# Allow: GET, HEAD, OPTIONS
-class UsernameRetrieveAPIView(generics.RetrieveAPIView):
+#Allow GET, HEAD, OPTIONS
+class UserNameViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = UsernameSerializer
-    lookup_field = "username"
+    lookup_field = 'username'
+

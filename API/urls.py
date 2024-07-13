@@ -14,11 +14,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(r'notes',views.NotePadeViewSet)
+router.register(r'usernames',views.UserNameViewSet)
 
 urlpatterns = [
-    path('test1/', views.NotePadListCreate.as_view(), name="api_get_post"),
-    path('test1/<int:pk>', views.NotePadRetrieveUpdateDestroy.as_view(), name="api_update_delete"),
-    path('form/<str:username>', views.UsernameRetrieveAPIView.as_view(), name="username_validator"),
+    path("", include(router.urls)),
 ]
