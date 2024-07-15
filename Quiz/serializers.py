@@ -18,4 +18,12 @@ class QuizSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Quiz
-        fields = "__all__"
+        #The API responds with data in this same order
+        fields = [
+            'id',
+            'uuid',
+            'question_text',
+            'options',
+            'category',
+            'difficulty',
+        ]
