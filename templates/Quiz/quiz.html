@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+    <!-- header -->
+    <div class="d-flex flex-row justify-content-evenly align-items-center align-content-center mt-5">
+        <!-- closing btn -->
+        <div>
+            <button type="button" class="btn btn-close p-2 border border-black" onclick="history.back()"></button>
+        </div>
+        <!-- progress -->
+        <div class="justify-content-center align-items-center align-content-center border border-black border-2 rounded-5"
+            style="width: 80%;">
+            <div class="m-2 d-flex flex-row justify-content-evenly align-items-center align-content-center">
+                <!-- progress bar -->
+                <div class="progress" style="width: 90%;">
+                    <div class="progress-bar w-50"></div>
+                </div>
+                <!-- completion rate -->
+                <div>
+                    15/50
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz -->
+    <div class="mt-5 container" style="background-color: inherit;">
+        <div class="d-flex justify-content-center position-relative" style="background-color: inherit;">
+            <!-- Top part -->
+            <div class="position-absolute top z-2 rounded-circle " style="background-color: inherit;">
+                <div class="m-1">
+                    <img src="{% static 'Quiz/img/basketball-94.png' %}" alt="basketball" style="height: 100px; width: 100px;">
+                </div>
+            </div>
+            <!-- Body part -->
+            <div class="position-absolute z-1 text-center pb-5">
+                <!-- Question -->
+                <div class="bg-info-subtle rounded-4 mb-5" style="margin-top: 65px;">
+                    <div class="p-5">
+                        <h1>how to place one div on top of another div using bootstrap 5.3?</h1>
+                    </div>
+                    <!-- progress bar -->
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 100%; background-color: green;" id="time-progress">
+                        </div>
+                    </div>
+                </div>
+
+                <section id="options">
+                    <!-- Option1 -->
+                    <div class="mb-4 rounded-3 border border-5 d-flex p-0 d-flex justify-content-center align-items-center align-content-center"
+                        style="cursor: pointer;" data-value="1">
+                        <h4 class="m-1">Option one</h4>
+                    </div>
+                    <!-- Option2 -->
+                    <div class="mb-4 rounded-3 border border-5 d-flex p-0 d-flex justify-content-center align-items-center align-content-center"
+                        style="cursor: pointer;" data-value="2">
+                        <h4 class="m-1">Option two</h4>
+                    </div>
+                    <!-- Option3 -->
+                    <div class="mb-4 rounded-3 border border-5 d-flex p-0 d-flex justify-content-center align-items-center align-content-center"
+                        style="cursor: pointer;" data-value="3">
+                        <h4 class="m-1">Option three</h4>
+                    </div>
+                    <!-- Option4 -->
+                    <div class="mb-4 rounded-3 border border-5 d-flex p-0 d-flex justify-content-center align-items-center align-content-center"
+                        style="cursor: pointer;" data-value="4">
+                        <h4 class="m-1">Option four</h4>
+                    </div>
+                </section>
+                <input type="submit" class="btn btn-lg btn-primary col-12 rounded-3 mt-3">
+            </div>
+        </div>
+    </div>
+{% endblock body %}
+
+
+{% block scriptsrc %}
+    <script src="{% static 'Quiz/js/main.js' %}"></script>
+{% endblock scriptsrc %}
+    

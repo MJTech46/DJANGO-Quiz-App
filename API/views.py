@@ -6,7 +6,7 @@ from Account.models import CustomUser
 from Quiz.models import Quiz
 
 #Serializers
-from .serializers import NotePadeSerialiser
+from .serializers import NotePadSerializer
 from Account.serializers import UsernameSerializer
 from Quiz.serializers import QuizSerializer
 
@@ -21,9 +21,9 @@ import random
 
 
 #Allow __all__
-class NotePadeViewSet(viewsets.ModelViewSet):
+class NotePadViewSet(viewsets.ModelViewSet):
     queryset = NotePad.objects.all()
-    serializer_class = NotePadeSerialiser
+    serializer_class = NotePadSerializer
 
 #Allow GET, HEAD, OPTIONS
 class UserNameViewSet(viewsets.ReadOnlyModelViewSet):
@@ -52,7 +52,7 @@ class QuizViewSet(viewsets.ReadOnlyModelViewSet):
     
     ###For 'difficulty' based random###
     @action(detail=False, methods=["get"], url_path="random-easy")
-    def rendom_easy_quiz(self, request):
+    def random_easy_quiz(self, request):
         quizzes = list(Quiz.objects.filter(difficulty='easy'))
         if quizzes:
             random_quiz = random.choice(quizzes)
@@ -62,7 +62,7 @@ class QuizViewSet(viewsets.ReadOnlyModelViewSet):
             return Response({'detail': 'No easy quiz found'}, status=status.HTTP_404_NOT_FOUND)
     
     @action(detail=False, methods=["get"], url_path="random-medium")
-    def rendom_medium_quiz(self, request):
+    def random_medium_quiz(self, request):
         quizzes = list(Quiz.objects.filter(difficulty='medium'))
         if quizzes:
             random_quiz = random.choice(quizzes)
@@ -72,7 +72,7 @@ class QuizViewSet(viewsets.ReadOnlyModelViewSet):
             return Response({'detail': 'No medium quiz found'}, status=status.HTTP_404_NOT_FOUND)
     
     @action(detail=False, methods=["get"], url_path="random-hard")
-    def rendom_hard_quiz(self, request):
+    def random_hard_quiz(self, request):
         quizzes = list(Quiz.objects.filter(difficulty='hard'))
         if quizzes:
             random_quiz = random.choice(quizzes)

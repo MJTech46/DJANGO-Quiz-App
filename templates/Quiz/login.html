@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Login{% endblock title %}
+
+{% block link %}<link rel="stylesheet" href="{% static 'Quiz/css/login.css' %}">{% endblock link %} 
+
+{% block body %}
+    <!--  main container -->
+      <div class="d-flex flex-column justify-content-center align-items-center vh-100">
+            <div class="d-flex flex-column justify-content-center align-items-center login-container col-12 col-lg-6 col-md-8 rounded-4 border border-white border-2">
+                <h1 class="mb-5">USER LOGIN</h1>
+                <!-- 1st input div -->
+                <div class="mt-2 mb-3 col-12 d-flex justify-content-center gap-2">
+                    <img src="{% static 'Quiz/img/login/user-icon.png' %}" alt="user-icon" style="width: 48px; height: 48px; background-color: white;" class="p-2 rounded-5">
+                    <input type="text" name="username" style="height: 48px;" class="rounded-3 col-6" placeholder="Username">
+                </div>
+                <!-- 2nd input div -->
+                <div class="mt-3 mb-2 col-12 d-flex justify-content-center gap-2">
+                    <input type="password" name="password" style="height: 48px;" class="rounded-3 col-6" placeholder="Password">
+                    <img src="{% static 'Quiz/img/login/lock-icon.png' %}" alt="lock-icon" style="width: 48px; height: 48px; background-color: white;" class="p-2 rounded-5">
+                </div>
+                <!-- login btn -->
+                <button type="submit" class="mt-5 btn btn-light col-4 col-lg-7 col-md-7 rounded-3">LOGIN</button>
+            </div>
+      </div>
+{% endblock body %}

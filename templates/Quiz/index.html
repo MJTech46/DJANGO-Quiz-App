@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+    <!-- header -->
+    <div class="container mt-4 mb-2">
+            <div class="d-flex flex-row justify-content-between align-items-baseline gap-1">
+                <div>
+                    <h1>Hi, <strong>John</strong></h1>
+                    <p>Let's make this day productive</p>
+                </div>
+                <div class="custom-icon">
+                    <button type="button" class="btn rounded-5 p-0 m-0" data-bs-toggle="modal" data-bs-target="#changePicModal">
+                        <img src="{% static 'Quiz/img/person_unknown_icon.png' %}" alt="person_unknown_icon">
+                    </button>
+                </div>
+            </div>
+    </div>
+    <!-- statistics -->
+    <div class="d-flex justify-content-center mt-4">
+            <div id="statistics" class="d-flex flex-row justify-content-around  p-3 border rounded-4 shadow-lg" style="width: 90%;">
+                <!-- points -->
+                <a class="p-1 btn" href="{% url 'redeem' %}">
+                    <div class="d-flex flex-row gap-3">
+                        <div class="align-content-center">
+                            <img src="{% static 'Quiz/img/points-96.png' %}" alt="points" style="height: 50px; width: 50px;">
+                        </div>
+                        <div class="">
+                            <h3>Points</h3>
+                            <h4>3644</h4>
+                        </div>
+                    </div>
+                </a>
+                <!-- border separator -->
+                <div class="border-start border-end"></div> 
+                <!-- Rewards -->
+                <a class="p-1 btn" href="{% url 'redeem' %}">
+                    <div class="d-flex flex-row gap-3">
+                        <div class="align-content-center">
+                            <img src="{% static 'Quiz/img/gift-box-64.png' %}" alt="points" style="height: 50px; width: 50px;">
+                        </div>
+                        <div class="">
+                            <h3>Rewards</h3>
+                            <h4>7</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+    </div>
+    <!-- Let's play -->
+    <div class="container mt-5 mb-5">
+        <h1>Let's play</h1>
+        <div class="d-flex flex-wrap justify-content-evenly gap-5">
+            <!-- game  -->
+            <a href="/quiz.html" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/basketball-94.png' %}" alt="basketball" style="height: 100px; width: 100px;">
+                <h2>Sports</h2>
+                <h6>Difficulty: Easy</h6>
+                <h6>50 Point per Question</h6>
+            </a>
+            <!-- game  -->
+            <a href="/quiz.html" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/basketball-94.png' %}" alt="basketball" style="height: 100px; width: 100px;">
+                <h2>Sports</h2>
+                <h6>Difficulty: Easy</h6>
+                <h6>50 Point per Question</h6>
+            </a>
+            <!-- game  -->
+            <a href="/quiz.html" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/basketball-94.png' %}" alt="basketball" style="height: 100px; width: 100px;">
+                <h2>Sports</h2>
+                <h6>Difficulty: Easy</h6>
+                <h6>50 Point per Question</h6>
+            </a>
+            <!-- game  -->
+            <a href="/quiz.html" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/basketball-94.png' %}" alt="basketball" style="height: 100px; width: 100px;">
+                <h2>Sports</h2>
+                <h6>Difficulty: Easy</h6>
+                <h6>50 Point per Question</h6>
+            </a>
+            <!-- game  -->
+            <a href="/quiz.html" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/basketball-94.png' %}" alt="basketball" style="height: 100px; width: 100px;">
+                <h2>Sports</h2>
+                <h6>Difficulty: Easy</h6>
+                <h6>50 Point per Question</h6>
+            </a>
+            
+        </div>
+    </div>
+
+{% endblock body %}

@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Redeem{% endblock title %}
+
+{% block body %}
+    <!-- header -->
+   <div class="container mt-4 mb-2">
+        <div class="d-flex flex-row justify-content-between align-items-baseline gap-1">
+            <div>
+                <h1>Wow, <strong>John</strong></h1>
+                <p>Let's make this day profitable</p>
+            </div>
+            <div class="custom-icon">
+                <button type="button" class="btn rounded-5 p-0 m-0" data-bs-toggle="modal" data-bs-target="#changePicModal">
+                    <img src="{% static 'Quiz/img/person_unknown_icon.png' %}" alt="person_unknown_icon">
+                </button>
+            </div>
+        </div>
+   </div>
+    <!-- statistics -->
+   <div class="d-flex justify-content-center mt-4">
+        <div id="staticstics" class="d-flex flex-row justify-content-around  p-3 border rounded-4 shadow-lg" style="width: 90%;">
+            <!-- points -->
+            <div class="p-1 ">
+                <div class="d-flex flex-row gap-3">
+                    <div class="align-content-center">
+                        <img src="{% static 'Quiz/img/points-96.png' %}" alt="points" style="height: 50px; width: 50px;">
+                    </div>
+                    <div class="">
+                        <h3>Current Points</h3>
+                        <h4>3644</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- border separator -->
+            <div class="border-start border-end"></div> 
+            <!-- Rewards -->
+            <div class="p-1">
+                <div class="d-flex flex-row gap-3">
+                    <div class="align-content-center">
+                        <img src="{% static 'Quiz/img/redeem/shooting-stars-100.png' %}" alt="points" style="height: 50px; width: 50px;">
+                    </div>
+                    <div class="">
+                        <h3>Lifetime Points</h3>
+                        <h4>7864</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+   <!-- rewards -->
+    <div class="container mt-5 mb-5">
+        <h1>Redeem now</h1>
+        <div class="mt-3 d-flex flex-wrap justify-content-evenly gap-5">
+            <!-- reward  -->
+            <div class="p-0 custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/redeem/000400000343_v3_262x164.png' %}" alt="basketball" style="height: 100%; width: 100%;">
+                <h2>Roblox card</h2>
+                <h6>5,000 Points</h6>
+            </div>
+            <!-- reward  -->
+            <div class=" custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/redeem/000400000359_262x164.png' %}" alt="basketball" style="height: 100%; width: 100%;">
+                <h2>Roblox card</h2>
+                <h6>5,000 Points</h6>
+            </div>
+            <!-- reward  -->
+            <div class=" custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/redeem/000400000392_310x194.png' %}" alt="basketball" style="height: 100%; width: 100%;">
+                <h2>Roblox card</h2>
+                <h6>5,000 Points</h6>
+            </div>
+            <!-- reward  -->
+            <div class=" custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/redeem/AmazonPayIN_262x164.png' %}" alt="basketball" style="height: 100%; width: 100%;">
+                <h2>Roblox card</h2>
+                <h6>5,000 Points</h6>
+            </div>
+            <!-- reward  -->
+            <div class=" custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/redeem/BookMyShow_262x164.png' %}" alt="basketball" style="height: 100%; width: 100%;">
+                <h2>Roblox card</h2>
+                <h6>5,000 Points</h6>
+            </div>
+            <!-- reward  -->
+            <div class=" custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/redeem/Flipkart_262x164.png' %}" alt="basketball" style="height: 100%; width: 100%;">
+                <h2>Roblox card</h2>
+                <h6>5,000 Points</h6>
+            </div>
+            <!-- reward  -->
+            <div class=" custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/redeem/Spotify_3M_rerun_262x164.png' %}" alt="basketball" style="height: 100%; width: 100%;">
+                <h2>Roblox card</h2>
+                <h6>5,000 Points</h6>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

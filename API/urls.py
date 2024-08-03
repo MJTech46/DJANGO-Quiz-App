@@ -19,7 +19,7 @@ from . import views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register(r'notes',views.NotePadeViewSet)
+router.register(r'notes',views.NotePadViewSet)
 router.register(r'usernames',views.UserNameViewSet)
 router.register(r'quizzes', views.QuizViewSet)
 
