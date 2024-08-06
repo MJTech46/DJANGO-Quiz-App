@@ -4,6 +4,9 @@ from django.http import HttpRequest, HttpResponse
 def login(request: HttpRequest) -> HttpResponse:
     return render(request,"Quiz/login.html")
 
+def signup(request: HttpRequest) -> HttpResponse:
+    return render(request,"Quiz/signup.html")
+
 def home(request: HttpRequest) -> HttpResponse:
     return render(request,"Quiz/index.html")
 

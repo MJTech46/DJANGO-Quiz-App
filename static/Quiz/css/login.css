@@ -6,7 +6,13 @@ body{
 }
 
 .login-container {
-    padding-top: 10%;
+    padding-top: 8%;
     backdrop-filter: blur(10px);
-    padding-bottom: 10%;
+    padding-bottom: 8%;
+}
+
+.signup-container {
+    padding-top: 5%;
+    backdrop-filter: blur(10px);
+    padding-bottom: 5%;
 }
