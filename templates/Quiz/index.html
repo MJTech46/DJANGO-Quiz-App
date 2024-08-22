@@ -53,42 +53,17 @@
     <div class="container mt-5 mb-5">
         <h1>Let's play</h1>
         <div class="d-flex flex-wrap justify-content-evenly gap-5">
-            <!-- game  -->
-            <a href="{% url 'quiz' %}" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
-                <img src="{% static 'Quiz/img/basketball-94.png' %}" alt="basketball" style="height: 100px; width: 100px;">
-                <h2>Sports</h2>
-                <h6>Difficulty: Easy</h6>
-                <h6>50 Point per Question</h6>
-            </a>
-            <!-- game  -->
-            <a href="{% url 'quiz' %}" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
-                <img src="{% static 'Quiz/img/basketball-94.png' %}" alt="basketball" style="height: 100px; width: 100px;">
-                <h2>Sports</h2>
-                <h6>Difficulty: Easy</h6>
-                <h6>50 Point per Question</h6>
-            </a>
-            <!-- game  -->
-            <a href="{% url 'quiz' %}" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
-                <img src="{% static 'Quiz/img/basketball-94.png' %}" alt="basketball" style="height: 100px; width: 100px;">
-                <h2>Sports</h2>
-                <h6>Difficulty: Easy</h6>
-                <h6>50 Point per Question</h6>
-            </a>
-            <!-- game  -->
-            <a href="{% url 'quiz' %}" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
-                <img src="{% static 'Quiz/img/basketball-94.png' %}" alt="basketball" style="height: 100px; width: 100px;">
-                <h2>Sports</h2>
-                <h6>Difficulty: Easy</h6>
-                <h6>50 Point per Question</h6>
-            </a>
-            <!-- game  -->
-            <a href="{% url 'quiz' %}" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
-                <img src="{% static 'Quiz/img/basketball-94.png' %}" alt="basketball" style="height: 100px; width: 100px;">
-                <h2>Sports</h2>
-                <h6>Difficulty: Easy</h6>
-                <h6>50 Point per Question</h6>
-            </a>
-            
+        {% for difficulty in difficulty_levels %}
+            {% for obj in category_objs %}
+                <!-- game  -->
+                <a href="{% url 'quiz' %}/random/{{ obj.category_text }}/easy" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                    <img src="/media/{{ obj.category_image }}" alt="basketball" style="height: 100px; width: 100px;">
+                    <h2>{{ obj.category_text }}</h2>
+                    <h6>Difficulty: {{ difficulty }}</h6>
+                    <h6>{% if difficulty == "Easy" %}50{% elif difficulty == "Medium" %}75{% else %}100{% endif %} Point per Question</h6>
+                </a>
+            {% endfor %}
+        {% endfor %}
         </div>
     </div>
 
