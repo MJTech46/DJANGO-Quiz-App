@@ -9,7 +9,7 @@ def add_data(amount: int, difficulty: str, category: int, category_text: str) ->
     difficulty = [
         "easy", "medium", "hard"
     ]
-    category = check the api site
+    category = check the api site (https://opentdb.com/api_config.php)
     """
     counter=0
     print("\n****Task started****")

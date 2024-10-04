@@ -1,12 +1,10 @@
 ##All api views are here##
 
 #Models
-from .models import NotePad
 from Account.models import CustomUser
 from Quiz.models import Quiz
 
 #Serializers
-from .serializers import NotePadSerializer
 from Account.serializers import UsernameSerializer
 from Quiz.serializers import QuizSerializer
 
@@ -19,11 +17,6 @@ from rest_framework import status
 #Other imports
 import random
 
-
-#Allow __all__
-class NotePadViewSet(viewsets.ModelViewSet):
-    queryset = NotePad.objects.all()
-    serializer_class = NotePadSerializer
 
 #Allow GET, HEAD, OPTIONS
 class UserNameViewSet(viewsets.ReadOnlyModelViewSet):
