@@ -53,17 +53,20 @@
     <div class="container mt-5 mb-5">
         <h1>Let's play</h1>
         <div class="d-flex flex-wrap justify-content-evenly gap-5">
-        {% for difficulty in difficulty_levels %}
+            {% if not category_objs %}
+                <a href="/admin/" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                    <img src="/media/default/category/add.png" alt="basketball" style="height: 100px; width: 100px;">
+                    <h2>ADD</h2>
+                </a>
+            {% endif %}
             {% for obj in category_objs %}
                 <!-- game  -->
-                <a href="{% url 'quiz' %}/random/{{ obj.category_text }}/easy" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <a href="/quiz/" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
                     <img src="/media/{{ obj.category_image }}" alt="basketball" style="height: 100px; width: 100px;">
                     <h2>{{ obj.category_text }}</h2>
-                    <h6>Difficulty: {{ difficulty }}</h6>
                     <h6>{% if difficulty == "Easy" %}50{% elif difficulty == "Medium" %}75{% else %}100{% endif %} Point per Question</h6>
                 </a>
             {% endfor %}
-        {% endfor %}
         </div>
     </div>
 

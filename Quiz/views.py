@@ -14,7 +14,6 @@ def home(request: HttpRequest) -> HttpResponse:
 
     #creating context
     context = {
-        "difficulty_levels":("Easy", "Medium", "Hard"),
         "category_objs":category_objs
     }
 
