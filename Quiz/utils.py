@@ -1,5 +1,5 @@
 import requests
-from Quiz.models import Quiz, Option, Category
+from Quiz.models import Quiz, Option
 from django.db.utils import IntegrityError
 from time import sleep
 
@@ -27,12 +27,6 @@ def add_data(amount: int, difficulty: str, category: int, category_text: str) ->
         #for a deliberate delay
         sleep(5.00) 
         return None
-    #geting or creating Category
-    try:
-        category_obj=Category.objects.get(category_text=category_text)
-    except:
-        category_obj=Category(category_text=category_text)
-        category_obj.save()
     #if the get() was success
     for result in results_list:
         #gethering the data
@@ -45,7 +39,6 @@ def add_data(amount: int, difficulty: str, category: int, category_text: str) ->
             quiz=Quiz(
                 question_text=question,
                 difficulty=difficulty,
-                category=category_obj
             )
             quiz.save()
             counter+=1

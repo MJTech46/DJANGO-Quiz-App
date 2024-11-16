@@ -53,20 +53,21 @@
     <div class="container mt-5 mb-5">
         <h1>Let's play</h1>
         <div class="d-flex flex-wrap justify-content-evenly gap-5">
-            {% if not category_objs %}
-                <a href="/admin/" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+
+            <!-- play quiz -->
+            <a href="/quiz/" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <img src="/static/Quiz/img/quiz-100.png" alt="quiz-100" style="height: 100px; width: 100px;">
+                <h2>QUIZ GAME</h2>
+            </a>
+
+            <!-- admin only privilege -->
+            {% if admin %}
+                <a href="/admin/Quiz/quiz/add/" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
                     <img src="/media/default/category/add.png" alt="basketball" style="height: 100px; width: 100px;">
-                    <h2>ADD</h2>
+                    <h2>ADD QUIZZES</h2>
                 </a>
             {% endif %}
-            {% for obj in category_objs %}
-                <!-- game  -->
-                <a href="/quiz/" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
-                    <img src="/media/{{ obj.category_image }}" alt="basketball" style="height: 100px; width: 100px;">
-                    <h2>{{ obj.category_text }}</h2>
-                    <h6>{% if difficulty == "Easy" %}50{% elif difficulty == "Medium" %}75{% else %}100{% endif %} Point per Question</h6>
-                </a>
-            {% endfor %}
+
         </div>
     </div>
 

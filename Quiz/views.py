@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse
-from .models import Category
 
 def login(request: HttpRequest) -> HttpResponse:
     return render(request,"Quiz/login.html")
@@ -9,15 +8,10 @@ def signup(request: HttpRequest) -> HttpResponse:
     return render(request,"Quiz/signup.html")
 
 def home(request: HttpRequest) -> HttpResponse:
-    # collecting all the categories from db
-    category_objs = Category.objects.all()
-
-    #creating context
     context = {
-        "category_objs":category_objs
+        "admin":request.user.is_superuser
     }
-
-    return render(request,"Quiz/index.html", context=context)
+    return render(request,"Quiz/index.html", context)
 
 def redeem(request: HttpRequest) -> HttpResponse:
     return render(request,"Quiz/redeem.html")

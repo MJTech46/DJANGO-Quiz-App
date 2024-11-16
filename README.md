@@ -5,6 +5,14 @@
 
 ---
 
+<div align="center">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Warning_icon.svg/1200px-Warning_icon.svg.png"  height="270px" width="300px">
+
+<h1> This project is under development </h1>
+
+</div>
+
 ## Features
 
 ### For Admins:
@@ -32,8 +40,8 @@ Follow these steps to set up the project locally:
 ### Steps
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/MJTech46/quiz-app.git
-   cd quiz-app
+   git clone https://github.com/MJTech46/DJANGO-Quiz-App.git
+   cd DJANGO-Quiz-App
    ```
 
 2. **Create a Virtual Environment**  
