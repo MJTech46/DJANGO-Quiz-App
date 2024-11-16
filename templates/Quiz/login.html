@@ -8,6 +8,8 @@
 
 {% block body %}
     <!--  main container -->
+      <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
       <div class="d-flex flex-column justify-content-center align-items-center vh-100">
             <div class="d-flex flex-column justify-content-center align-items-center login-container col-12 col-lg-6 col-md-8 rounded-4 border border-white border-2">
                 <h1 class="mb-5">USER LOGIN</h1>
@@ -26,4 +28,5 @@
             </div>
             <p>Don't have an account? <a class="text-info" href="{% url 'signup' %}">Join here!</a></p>
       </div>
+    </form>
 {% endblock body %}

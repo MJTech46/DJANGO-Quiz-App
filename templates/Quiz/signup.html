@@ -8,6 +8,8 @@
 
 {% block body %}
     <!--  main container -->
+    <form action="{% url 'signup' %}" method="post">
+        {% csrf_token %}
       <div class="d-flex flex-column justify-content-center align-items-center vh-100">
             <div class="d-flex flex-column justify-content-center align-items-center signup-container col-12 col-lg-6 col-md-8 rounded-4 border border-white border-2">
                 <h1 class="mb-3">USER SIGNUP</h1>
@@ -23,7 +25,7 @@
                 </div>
                 <!-- 3rd input div -->
                 <div class="mt-1 mb-2 col-12 d-flex justify-content-center gap-2">
-                    <input type="password" name="password" style="height: 48px;" class="rounded-3 col-6" placeholder="Conform password">
+                    <input type="password" name="re-password" style="height: 48px;" class="rounded-3 col-6" placeholder="Conform password">
                     <img src="{% static 'Quiz/img/login/lock-icon.png' %}" alt="lock-icon" style="width: 48px; height: 48px; background-color: white;" class="p-2 rounded-5">
                 </div>
                 <!-- login btn -->
