@@ -49,15 +49,32 @@
                 </a>
             </div>
     </div>
+
     <!-- Let's play -->
     <div class="container mt-5 mb-5">
         <h1>Let's play</h1>
+
+        <!-- play quiz -->
         <div class="d-flex flex-wrap justify-content-evenly gap-5">
 
-            <!-- play quiz -->
+            <a href="/quiz/" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <img src="/static/Quiz/img/quiz2-100.png" alt="quiz-100" style="height: 100px; width: 100px;">
+                <h2>TODAY'S QUIZ</h2>
+            </a>
+
             <a href="/quiz/" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
                 <img src="/static/Quiz/img/quiz-100.png" alt="quiz-100" style="height: 100px; width: 100px;">
-                <h2>QUIZ GAME</h2>
+                <h2>SIMPLE QUIZ</h2>
+            </a>
+
+            <a href="/quiz/" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <img src="/static/Quiz/img/dev-quiz-100.png" alt="quiz-100" style="height: 100px; width: 100px;">
+                <h2>DEV QUIZ</h2>
+            </a>
+
+            <a href="/quiz/" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <img src="/static/Quiz/img/quiz-red-100.png" alt="quiz-100" style="height: 100px; width: 100px;">
+                <h2>HARD QUIZ</h2>
             </a>
 
             <!-- admin only privilege -->
@@ -66,9 +83,41 @@
                     <img src="/media/default/category/add.png" alt="basketball" style="height: 100px; width: 100px;">
                     <h2>ADD QUIZZES</h2>
                 </a>
-            {% endif %}
 
+                <a href="/admin/Quiz/quiz/" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                    <img src="/static/Quiz/img/delete-100.png" alt="basketball" style="height: 100px; width: 100px;">
+                    <h2>DEL QUIZZES</h2>
+                </a>
+            {% endif %}
         </div>
     </div>
 
+    <!-- Let's do other things -->
+    <div class="container mt-5 mb-5">
+        <h1>Let's do other things</h1>
+
+        <!-- play quiz -->
+        <div class="d-flex flex-wrap justify-content-evenly gap-5">
+
+            <a href="{% url 'redeem' %}" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/gift-box-64.png' %}" alt="gift-box" style="height: 100px; width: 100px;">
+                <h2>Redeem rewards</h2>
+            </a>
+
+            <a href="{% url 'redeem' %}" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/reward-100.png' %}" alt="gift-box" style="height: 100px; width: 100px;">
+                <h2>View collected rewards</h2>
+            </a>
+
+            <a href="/quiz/" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <img src="{% static 'Quiz/img/person_unknown_icon.png' %}" alt="person_unknown_icon" style="height: 100px; width: 100px;">
+                <h2>View profile</h2>
+            </a>
+
+            <a href="/quiz/" style="text-decoration: none; color: inherit;" class="p-4 custom-container  text-center shadow rounded-2">
+                <img src="/static/Quiz/img/remove-user-100.png" alt="quiz-100" style="height: 100px; width: 100px;">
+                <h2>Delete account</h2>
+            </a>
+        </div>
+    </div>
 {% endblock body %}
