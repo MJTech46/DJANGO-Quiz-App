@@ -1,65 +1,34 @@
-import requests
-from Quiz.models import Quiz, Option
-from django.db.utils import IntegrityError
-from time import sleep
+from .models import Reward
 
-def add_data(amount: int, difficulty: str, category: int, category_text: str) -> None:
-    """
-    amount = 1 to 50
-    difficulty = [
-        "easy", "medium", "hard"
-    ]
-    category = check the api site (https://opentdb.com/api_config.php)
-    """
-    counter=0
-    print("\n****Task started****")
-    # The API endpoint
-    url = f"https://opentdb.com/api.php?amount={amount}&category={category}&difficulty={difficulty}&type=multiple"
-    # A GET request to the API
-    response = requests.get(url)
-    #converting to json format
-    response_json = response.json()
-    #some times the api will return no data
-    try:
-        results_list = response_json["results"]
-    except KeyError:
-        print("Please Retry")
-        #for a deliberate delay
-        sleep(5.00) 
-        return None
-    #if the get() was success
-    for result in results_list:
-        #gethering the data
-        difficulty=result["difficulty"]
-        question=result["question"]
-        options= [result["correct_answer"]]+result["incorrect_answers"]
-        #there is a high possibility to send existing datas by the api
-        try:
-            #creating quiz
-            quiz=Quiz(
-                question_text=question,
-                difficulty=difficulty,
-            )
-            quiz.save()
-            counter+=1
-        #if existing data
-        except IntegrityError as e:
-            if "UNIQUE constraint failed".lower() in str(e).lower():
-                print("Skiped...")
-                continue
-            else:
-                raise e
-        #creating options
-        for i,option_txt in enumerate(options):
-            is_correct=False
-            if i == 0:
-                is_correct=True
-            option=Option(
-                quiz=quiz,
-                option_text=option_txt,
-                is_correct=is_correct
-            )
-            option.save()
-    print(f"****{counter} datas added to the db****")
-    #for a deliberate delay
-    sleep(5.00)
+def create_default_rewards_onces():
+    """ This function adding demo rewards for once """
+    Reward.objects.get_or_create(
+        reward_name = "Roblox card",
+        reward_value = 500,
+        reward_points_required = 5000,
+        reward_image = "/static/Quiz/img/redeem/000400000343_v3_262x164.png"
+    )
+    Reward.objects.get_or_create(
+        reward_name = "Amazon Gift card",
+        reward_value = 500,
+        reward_points_required = 5000,
+        reward_image = "/static/Quiz/img/redeem/AmazonPayIN_262x164.png"
+    )
+    Reward.objects.get_or_create(
+        reward_name = "Bookmyshow",
+        reward_value = 500,
+        reward_points_required = 5000,
+        reward_image = "/static/Quiz/img/redeem/BookMyShow_262x164.png"
+    )
+    Reward.objects.get_or_create(
+        reward_name = "Flipkart Gift card",
+        reward_value = 500,
+        reward_points_required = 5000,
+        reward_image = "/static/Quiz/img/redeem/Flipkart_262x164.png"
+    )
+    Reward.objects.get_or_create(
+        reward_name = "Spotify Premium",
+        reward_value = 60,
+        reward_points_required = 5000,
+        reward_image = "/static/Quiz/img/redeem/Spotify_3M_rerun_262x164.png"
+    )

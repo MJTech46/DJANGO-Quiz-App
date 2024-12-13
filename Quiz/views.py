@@ -3,6 +3,8 @@ from django.http import HttpRequest, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from Account.models import CustomUser
+from .models import Reward
+from .utils import create_default_rewards_onces
 
 def login(request: HttpRequest) -> HttpResponse:
     if request.method == "GET":
@@ -51,7 +53,11 @@ def home(request: HttpRequest) -> HttpResponse:
 
 @login_required(login_url="login")
 def redeem(request: HttpRequest) -> HttpResponse:
-    return render(request,"Quiz/redeem.html")
+    create_default_rewards_onces()
+    context={
+        "rewards" : Reward.objects.all()
+    }
+    return render(request,"Quiz/redeem.html", context)
 
 
 @login_required(login_url="login")
