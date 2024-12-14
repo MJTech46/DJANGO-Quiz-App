@@ -3,8 +3,12 @@ from django.http import HttpRequest, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from Account.models import CustomUser
-from .models import Reward
-from .utils import create_default_rewards_onces
+from .models import Reward, Quiz, Option
+from .utils import create_default_rewards_once
+from .utils import create_default_quizzes_once
+
+from random import choice
+
 
 def login(request: HttpRequest) -> HttpResponse:
     if request.method == "GET":
@@ -53,7 +57,7 @@ def home(request: HttpRequest) -> HttpResponse:
 
 @login_required(login_url="login")
 def redeem(request: HttpRequest) -> HttpResponse:
-    create_default_rewards_onces()
+    create_default_rewards_once()
     context={
         "rewards" : Reward.objects.all()
     }
@@ -62,5 +66,10 @@ def redeem(request: HttpRequest) -> HttpResponse:
 
 @login_required(login_url="login")
 def quiz(request: HttpRequest) -> HttpResponse:
+    # q = Quiz.objects.all()
+    # context = {
+    #     "quiz_text": choice(q)
+    # }
+    create_default_quizzes_once()
     return render(request,"Quiz/quiz.html")
 

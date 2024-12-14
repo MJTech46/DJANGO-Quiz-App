@@ -1,9 +1,7 @@
 from django.db import models
-from uuid import uuid4
 
 
 class Quiz(models.Model):
-    uuid = models.UUIDField(default=uuid4, unique=True, editable=False)
     question_text = models.TextField(unique=True, null=False)
 
     def __str__(self) -> str:
@@ -12,7 +10,6 @@ class Quiz(models.Model):
 
 
 class Option(models.Model):
-    uuid = models.UUIDField(default=uuid4, unique=True, editable=False)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="options") #related_name is the reverse relation
     option_text = models.TextField(null=False)
     is_correct = models.BooleanField(default=False)
