@@ -7,8 +7,8 @@ from .models import Reward, Quiz, Option
 from .utils import create_default_rewards_once
 from .utils import create_default_quizzes_once
 
-from random import choice
-
+from random import choice as random_choice
+from random import sample as random_sample
 
 def login(request: HttpRequest) -> HttpResponse:
     if request.method == "GET":
@@ -66,10 +66,18 @@ def redeem(request: HttpRequest) -> HttpResponse:
 
 @login_required(login_url="login")
 def quiz(request: HttpRequest) -> HttpResponse:
-    # q = Quiz.objects.all()
-    # context = {
-    #     "quiz_text": choice(q)
-    # }
     create_default_quizzes_once()
-    return render(request,"Quiz/quiz.html")
+    
+    q = Quiz.objects.all()
+    q = random_choice(q)
+
+    o = list(Option.objects.filter(quiz = q.pk))
+    o = random_sample(o, len(o))
+    o = enumerate(o, start=1)
+
+    context = {
+        "quiz": q,
+        "options": o
+    }
+    return render(request,"Quiz/quiz.html", context)
 

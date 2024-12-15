@@ -40,7 +40,7 @@
                 <!-- Question -->
                 <div class="bg-info-subtle rounded-4 mb-5" style="margin-top: 65px;">
                     <div class="p-5">
-                        <h1>how to place one div on top of another div using bootstrap 5.3?</h1>
+                        <h1>{{ quiz.question_text }}</h1>
                     </div>
                     <!-- progress bar -->
                     <div class="progress">
@@ -50,26 +50,13 @@
                 </div>
 
                 <section id="options">
-                    <!-- Option1 -->
-                    <div class="mb-4 rounded-3 border border-5 d-flex p-0 d-flex justify-content-center align-items-center align-content-center"
-                        style="cursor: pointer;" data-value="1">
-                        <h4 class="m-1">Option one</h4>
-                    </div>
-                    <!-- Option2 -->
-                    <div class="mb-4 rounded-3 border border-5 d-flex p-0 d-flex justify-content-center align-items-center align-content-center"
-                        style="cursor: pointer;" data-value="2">
-                        <h4 class="m-1">Option two</h4>
-                    </div>
-                    <!-- Option3 -->
-                    <div class="mb-4 rounded-3 border border-5 d-flex p-0 d-flex justify-content-center align-items-center align-content-center"
-                        style="cursor: pointer;" data-value="3">
-                        <h4 class="m-1">Option three</h4>
-                    </div>
-                    <!-- Option4 -->
-                    <div class="mb-4 rounded-3 border border-5 d-flex p-0 d-flex justify-content-center align-items-center align-content-center"
-                        style="cursor: pointer;" data-value="4">
-                        <h4 class="m-1">Option four</h4>
-                    </div>
+                    <!-- Options -->
+                    {% for i, option in options %}
+                        <div class="mb-4 rounded-3 border border-5 d-flex p-0 d-flex justify-content-center align-items-center align-content-center"
+                            style="cursor: pointer;" data-value="{{ i }}">
+                            <h4 class="m-1">{{ option.option_text }}</h4>
+                        </div>
+                    {% endfor %}
                 </section>
                 <input type="submit" class="btn btn-lg btn-primary col-12 rounded-3 mt-3">
             </div>
