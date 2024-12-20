@@ -27,41 +27,48 @@
     </div>
 
     <!-- Quiz -->
-    <div class="mt-5 container" style="background-color: inherit;">
-        <div class="d-flex justify-content-center position-relative" style="background-color: inherit;">
-            <!-- Top part -->
-            <div class="position-absolute top z-2 rounded-circle " style="background-color: inherit;">
-                <div class="m-1">
-                    <img src="{% static 'Quiz/img/basketball-94.png' %}" alt="basketball" style="height: 100px; width: 100px;">
-                </div>
-            </div>
-            <!-- Body part -->
-            <div class="position-absolute z-1 text-center pb-5">
-                <!-- Question -->
-                <div class="bg-info-subtle rounded-4 mb-5" style="margin-top: 65px;">
-                    <div class="p-5">
-                        <h1>{{ quiz.question_text }}</h1>
+    <form action="" method="post">
+        <div class="mt-5 container" style="background-color: inherit;">
+            <div class="d-flex justify-content-center position-relative" style="background-color: inherit;">
+                <!-- Top part -->
+                <div class="position-absolute top z-2 rounded-circle " style="background-color: inherit;">
+                    <div class="m-1">
+                        <img src="{% static 'Quiz/img/basketball-94.png' %}" alt="basketball" style="height: 100px; width: 100px;">
                     </div>
-                    <!-- progress bar -->
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 100%; background-color: green;" id="time-progress">
+                </div>
+                <!-- Body part -->
+                <div class="position-absolute z-1 text-center pb-5">
+                    <!-- Question -->
+                    <div class="bg-info-subtle rounded-4 mb-5" style="margin-top: 65px;">
+                        <div class="p-5">
+                            <h1>{{ quiz.question_text }}</h1>
+                        </div>
+                        <!-- progress bar -->
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 100%; background-color: green;" id="time-progress">
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <section id="options">
-                    <!-- Options -->
-                    {% for i, option in options %}
-                        <div class="mb-4 rounded-3 border border-5 d-flex p-0 d-flex justify-content-center align-items-center align-content-center"
-                            style="cursor: pointer;" data-value="{{ i }}">
-                            <h4 class="m-1">{{ option.option_text }}</h4>
-                        </div>
-                    {% endfor %}
-                </section>
-                <input type="submit" class="btn btn-lg btn-primary col-12 rounded-3 mt-3">
+                    <section id="options">
+                        <!-- Options -->
+                        {% for i, option in options %}
+                            <div class="mb-4 rounded-3 border border-5 d-flex p-0 d-flex justify-content-center align-items-center align-content-center"
+                                style="cursor: pointer;" data-value="{{ option.pk }}">
+                                <h4 class="m-1">{{ option.option_text }}</h4>
+                            </div>
+                        {% endfor %}
+                    </section>
+
+                    {% csrf_token %}
+                    <input type="text" value="{{ quiz.pk }}" name="quizPK" id="quizPK" hidden>
+                    <input type="text" name="optionPK" id="optionPK" hidden>
+
+                    <input type="submit" class="btn btn-lg btn-primary col-12 rounded-3 mt-3">
+                </div>
             </div>
         </div>
-    </div>
+    </form>
 {% endblock body %}
 
 

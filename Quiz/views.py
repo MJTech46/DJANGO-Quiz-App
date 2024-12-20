@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from Account.models import CustomUser
@@ -9,6 +9,7 @@ from .utils import create_default_quizzes_once
 
 from random import choice as random_choice
 from random import sample as random_sample
+from json import dumps as json_dumps
 
 def login(request: HttpRequest) -> HttpResponse:
     if request.method == "GET":
@@ -66,18 +67,34 @@ def redeem(request: HttpRequest) -> HttpResponse:
 
 @login_required(login_url="login")
 def quiz(request: HttpRequest) -> HttpResponse:
-    create_default_quizzes_once()
+
+    if request.method == "GET":
+        create_default_quizzes_once()
+        
+        q = Quiz.objects.all()
+        q = random_choice(q)
+
+        o = list(Option.objects.filter(quiz = q.pk))
+        o = random_sample(o, len(o))
+        o = enumerate(o, start=1)
+
+        context = {
+            "quiz": q,
+            "options": o
+        }
+        return render(request,"Quiz/quiz.html", context)
     
-    q = Quiz.objects.all()
-    q = random_choice(q)
+    if request.method == "POST":
+        quiz_pk = request.POST.get("quizPK")
+        option_pk = request.POST.get("optionPK")
 
-    o = list(Option.objects.filter(quiz = q.pk))
-    o = random_sample(o, len(o))
-    o = enumerate(o, start=1)
+        user = request.user
 
-    context = {
-        "quiz": q,
-        "options": o
-    }
-    return render(request,"Quiz/quiz.html", context)
+        response = json_dumps({
+            "is_true": Option.objects.get(pk=option_pk).is_correct
+        })
+
+        print(f"{quiz_pk=}\n{option_pk=}\n{user=}\n{response=}")
+
+        return redirect("quiz") #JsonResponse(response)
 

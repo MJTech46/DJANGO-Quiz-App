@@ -34,6 +34,7 @@ const updater = setInterval(() => {
 /* selection div scripts */
 
 const allOptions=document.querySelectorAll("#options div");
+const optionPKInput = document.querySelector("#optionPK");
 console.log(allOptions);
 
 allOptions.forEach( div => {
@@ -43,5 +44,6 @@ allOptions.forEach( div => {
         });
         div.classList.add("border-primary");
         console.log('Selected value:', div.getAttribute('data-value'));
+        optionPKInput.setAttribute("value", div.getAttribute('data-value'))
     });
 });
