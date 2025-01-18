@@ -90,11 +90,19 @@ def quiz(request: HttpRequest) -> HttpResponse:
 
         user = request.user
 
+        # Adding points to the user account
+        is_true = Option.objects.get(pk=option_pk).is_correct
+        if is_true:
+            user_obj = CustomUser.objects.get(pk=user.pk)
+            user_obj.lifeTime_coins = user_obj.lifeTime_coins + 50
+            user_obj.current_coins = user_obj.current_coins + 50
+            user_obj.save()
+
         response = json_dumps({
-            "is_true": Option.objects.get(pk=option_pk).is_correct
+            "is_true": is_true
         })
 
         print(f"{quiz_pk=}\n{option_pk=}\n{user=}\n{response=}")
 
-        return redirect("quiz") #JsonResponse(response)
+        return JsonResponse(response)
 

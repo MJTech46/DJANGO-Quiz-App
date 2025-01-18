@@ -43,7 +43,15 @@ allOptions.forEach( div => {
             div.classList.remove("border-primary");
         });
         div.classList.add("border-primary");
-        console.log('Selected value:', div.getAttribute('data-value'));
+        //console.log('Selected value:', div.getAttribute('data-value'));
         optionPKInput.setAttribute("value", div.getAttribute('data-value'))
     });
 });
+
+/* answer checking section */
+
+const QuizForm = document.querySelector("#QuizForm");
+form.addEventListener('submit', function(event) {
+    // Prevent the default form submission
+    event.preventDefault();
+})
